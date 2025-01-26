@@ -626,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoardManager: {fileID: 1698869961}
   PlayerController: {fileID: 341280000}
+  UIDoc: {fileID: 2121008585}
 --- !u!4 &2142641005
 Transform:
   m_ObjectHideFlags: 0
