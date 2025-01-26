@@ -547,6 +547,7 @@ MonoBehaviour:
   - {fileID: 6848923177667772613, guid: 678e16b3ab66e426da433d676b2bda50, type: 3}
   - {fileID: 2795858685891879133, guid: cbb7d9f8bdccd49b2b5885cb39a36bba, type: 3}
   - {fileID: 2709449073653570634, guid: eeb6780cd95684e8f8c4382658ba7490, type: 3}
+  - {fileID: 5092807062919250646, guid: 03ca002a50e2242c69163411c3ea8f2b, type: 3}
   Player: {fileID: 341280000}
   m_NumberOfFood: 10
 --- !u!1 &2121008584
