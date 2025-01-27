@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48280c2de285347c9a923ebcae9fd0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObstacleTile: {fileID: 11400000, guid: 71125bfd2085747f2a15519a35cc7bf5, type: 2}
-  DamagedTile: {fileID: 11400000, guid: 6b593a0517dac48bba9ce39547f64680, type: 2}
+  ObstacleTile: {fileID: 11400000, guid: 2fb213bbe662e4e359cb6f2fcd664f43, type: 2}
+  DamagedTile: {fileID: 11400000, guid: 2fb213bbe662e4e359cb6f2fcd664f43, type: 2}
   MaxHealth: 3

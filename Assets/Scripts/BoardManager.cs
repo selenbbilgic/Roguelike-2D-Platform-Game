@@ -99,7 +99,8 @@ public class BoardManager : MonoBehaviour
     
     void GenerateFood()
     {
-    int foodCount = m_NumberOfFood;
+    int foodCount = (int)(m_NumberOfFood - (GameManager.Instance.CurrentLevel * 0.4f));
+    Debug.Log(foodCount);
     for (int i = 0; i < foodCount; ++i)
     {
         int randomIndex = Random.Range(0, m_EmptyCellsList.Count);

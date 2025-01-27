@@ -13,6 +13,8 @@ public class ExitCellObject : CellObject
 
     public override void PlayerEntered()
     {
-    GameManager.Instance.NewLevel();
+        if (!(GameManager.Instance.m_FoodAmount <= 0)) {
+            GameManager.Instance.NewLevel();
+        }
     }
 }
