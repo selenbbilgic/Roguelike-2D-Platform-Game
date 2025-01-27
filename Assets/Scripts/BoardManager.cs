@@ -27,6 +27,8 @@ public class BoardManager : MonoBehaviour
     [SerializeField]
     private int m_NumberOfFood;
 
+    public WallObject[] WallPrefabs;
+
     // Start is called before the first frame update
     public void Init()
     {
@@ -61,6 +63,7 @@ public class BoardManager : MonoBehaviour
     }
     
     m_EmptyCellsList.Remove(new Vector2Int(1, 1));
+    GenerateWall();
     GenerateFood();
     }
 
@@ -80,6 +83,14 @@ public class BoardManager : MonoBehaviour
     return m_BoardData[cellIndex.x, cellIndex.y];
     }
 
+    void AddObject(CellObject obj, Vector2Int coord)
+    {
+    CellData data = m_BoardData[coord.x, coord.y];
+    obj.transform.position = CellToWorld(coord);
+    data.ContainedObject = obj;
+    obj.Init(coord);
+    }
+    
     void GenerateFood()
     {
     int foodCount = m_NumberOfFood;
@@ -87,15 +98,37 @@ public class BoardManager : MonoBehaviour
     {
         int randomIndex = Random.Range(0, m_EmptyCellsList.Count);
         Vector2Int coord = m_EmptyCellsList[randomIndex];
-        
+
         m_EmptyCellsList.RemoveAt(randomIndex);
-        CellData data = m_BoardData[coord.x, coord.y];
-        
         int randomFoodIndex = Random.Range(0, FoodPrefabs.Length);
         FoodObject newFood = Instantiate(FoodPrefabs[randomFoodIndex]);
-        
-        newFood.transform.position = CellToWorld(coord);
-        data.ContainedObject = newFood;
+        AddObject(newFood, coord);
+    }
+    }
+
+    public void SetCellTile(Vector2Int cellIndex, Tile tile)
+    {
+        m_Tilemap.SetTile(new Vector3Int(cellIndex.x, cellIndex.y, 0), tile);
+    }
+
+    public Tile GetCellTile(Vector2Int cellIndex)
+    {
+        return m_Tilemap.GetTile<Tile>(new Vector3Int(cellIndex.x, cellIndex.y, 0));
+    }
+
+    void GenerateWall()
+    {
+    int wallCount = Random.Range(6, 10);
+    for (int i = 0; i < wallCount; ++i)
+    {
+        int randomIndex = Random.Range(0, m_EmptyCellsList.Count);
+        Vector2Int coord = m_EmptyCellsList[randomIndex];
+
+        m_EmptyCellsList.RemoveAt(randomIndex);
+
+        int randomWallIndex = Random.Range(0, WallPrefabs.Length);
+        WallObject newWall = Instantiate(WallPrefabs[randomWallIndex]);
+        AddObject(newWall, coord);
     }
     }
 }
